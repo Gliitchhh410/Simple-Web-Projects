@@ -61,3 +61,12 @@ const quizQuestions = [
     ],
   },
 ];
+
+
+let currentQuestionIndex = 0
+let score = 0
+let answersDisabled = false // for stopping the user from changing his answer
+
+totalQuestionsSpan.textContent = quizQuestions.length
+maxScoreSpan.textContent = quizQuestions.length
+
