@@ -68,5 +68,40 @@ body {
     margin-bottom: 1rem;
 }
 
+.answers-container {
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.answer-btn {
+    background: #f8f0e5;
+    columns: #333;
+    border: 2px solid #eadbc8;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
 
 
+.answer-btn:hover {
+    background-color: #eadbc8;
+    border-color: #dac0ae;
+}
+
+
+
+.answer-btn.correct{
+    background-color: #e6fff0;
+    border-color: #a3f0c4;
+    color: #28a745;
+}
+
+.answer-btn.incorrect{
+    background-color: #fff0f0;
+    border-color: #ffbdbd;
+    color: #dc3545;
+}
