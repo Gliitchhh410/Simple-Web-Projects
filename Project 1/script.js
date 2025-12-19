@@ -153,3 +153,21 @@ function selectAnswer(event){ // event is used when the function is a callback i
         }
     }, 1000)
 }
+
+
+
+function showResults(){
+    quizScreen.classList.remove("active")
+    resultScreen.classList.add("active")
+
+    finalScoreSpan.textContent = score
+
+    const percentage = (score / quizQuestions.length) * 100
+
+    if (percentage === 100) resultMessage.textContent = "Fucking Great Job"
+    else {
+        resultMessage.textContent = "Not Fucking Great Job, Wanker"
+    }
+}
+
+
