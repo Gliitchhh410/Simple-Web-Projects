@@ -101,7 +101,7 @@ function showQuestion(){
 
     answersContainer.textContent = ""
 
-    currentQuestion.answers.forEach(answer => {
+    currentQuestion.answers.forEach((answer) => {
         const button = document.createElement("button")
         button.textContent = answer.text
         button.classList.add("answer-btn")
@@ -112,4 +112,44 @@ function showQuestion(){
 
         answersContainer.appendChild(button)
     })
+}
+
+
+
+function selectAnswer(event){ // event is used when the function is a callback itself
+    if (answersDisabled) return
+    answersDisabled = true
+
+
+    const selectedButton = event.target // will return the selected button
+    const isCorrect = selectedButton.dataset.correct === "true"
+
+
+    Array.from(answersContainer.children).forEach((button) => {
+        if (button.dataset.correct === "true"){
+            button.classList.add("correct")
+        }
+        else {
+            button.classList.add("incorrect")
+        }
+    })
+
+
+    if (isCorrect){
+        score++
+        scoreSpan.textContent = score
+    }
+
+
+
+    setTimeout(()=> {
+        currentQuestionIndex++
+
+        if (currentQuestionIndex < quizQuestions.length){
+            showQuestion()
+        }
+        else {
+            showResults()
+        }
+    }, 1000)
 }
