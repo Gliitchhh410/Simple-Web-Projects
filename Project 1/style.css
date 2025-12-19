@@ -26,3 +26,11 @@ body {
     overflow: hidden;
     position: relative;
 }
+
+
+
+.screen {
+    display: none;
+    padding: 2 rem;
+    text-align: center;
+}
