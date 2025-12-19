@@ -78,96 +78,84 @@ function startQuiz() {
   startScreen.classList.remove("active");
   quizScreen.classList.add("active");
 
-  showQuestion
+  showQuestion();
 }
 
-function restartQuiz() {}
-
-
-function showQuestion(){
-    answersDisabled = false
-
-    const currentQuestion = quizQuestions[currentQuestionIndex]
-
-    currentQuestionSpan.textContent = currentQuestionIndex + 1
-
-    const progressPercent = (currentQuestionIndex / quizQuestions.length) * 100
-
-    progressBar.style.width = progressBar + "%"
-
-
-    questionText.textContent = currentQuestion.question
-
-
-    answersContainer.textContent = ""
-
-    currentQuestion.answers.forEach((answer) => {
-        const button = document.createElement("button")
-        button.textContent = answer.text
-        button.classList.add("answer-btn")
-
-        button.dataset.correct = answer.correct  //dataset is a property of the button element used to store custom data within the button itself
-
-        button.addEventListener('click', selectAnswer)
-
-        answersContainer.appendChild(button)
-    })
+function restartQuiz() {
+  resultScreen.classList.remove("active");
+  startQuiz();
 }
 
+function showQuestion() {
+  answersDisabled = false;
 
+  const currentQuestion = quizQuestions[currentQuestionIndex];
 
-function selectAnswer(event){ // event is used when the function is a callback itself
-    if (answersDisabled) return
-    answersDisabled = true
+  currentQuestionSpan.textContent = currentQuestionIndex + 1;
 
+  const progressPercent = (currentQuestionIndex / quizQuestions.length) * 100;
 
-    const selectedButton = event.target // will return the selected button
-    const isCorrect = selectedButton.dataset.correct === "true"
+  progressBar.style.width = progressPercent + "%";
 
+  questionText.textContent = currentQuestion.question;
 
-    Array.from(answersContainer.children).forEach((button) => {
-        if (button.dataset.correct === "true"){
-            button.classList.add("correct")
-        }
-        else {
-            button.classList.add("incorrect")
-        }
-    })
+  answersContainer.textContent = "";
 
+  currentQuestion.answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.textContent = answer.text;
+    button.classList.add("answer-btn");
 
-    if (isCorrect){
-        score++
-        scoreSpan.textContent = score
+    button.dataset.correct = answer.correct; //dataset is a property of the button element used to store custom data within the button itself
+
+    button.addEventListener("click", selectAnswer);
+
+    answersContainer.appendChild(button);
+  });
+}
+
+function selectAnswer(event) {
+  // event is used when the function is a callback itself
+  if (answersDisabled) return;
+  answersDisabled = true;
+
+  const selectedButton = event.target; // will return the selected button
+  const isCorrect = selectedButton.dataset.correct === "true";
+
+  Array.from(answersContainer.children).forEach((button) => {
+    if (button.dataset.correct === "true") {
+      button.classList.add("correct");
+    } else {
+      button.classList.add("incorrect");
     }
+  });
 
+  if (isCorrect) {
+    score++;
+    scoreSpan.textContent = score;
+  }
 
+  setTimeout(() => {
+    currentQuestionIndex++;
 
-    setTimeout(()=> {
-        currentQuestionIndex++
-
-        if (currentQuestionIndex < quizQuestions.length){
-            showQuestion()
-        }
-        else {
-            showResults()
-        }
-    }, 1000)
-}
-
-
-
-function showResults(){
-    quizScreen.classList.remove("active")
-    resultScreen.classList.add("active")
-
-    finalScoreSpan.textContent = score
-
-    const percentage = (score / quizQuestions.length) * 100
-
-    if (percentage === 100) resultMessage.textContent = "Fucking Great Job"
-    else {
-        resultMessage.textContent = "Not Fucking Great Job, Wanker"
+    if (currentQuestionIndex < quizQuestions.length) {
+      showQuestion();
+    } else {
+      showResults();
     }
+  }, 1000);
 }
 
+function showResults() {
+  quizScreen.classList.remove("active");
+  resultScreen.classList.add("active");
 
+  finalScoreSpan.textContent = score;
+
+  const percentage = (score / quizQuestions.length) * 100;
+
+  if (percentage === 100) resultMessage.textContent = "Fucking Great Job";
+  else {
+    resultMessage.textContent = "Not Fucking Great Job, Wanker";
+  }
+}
