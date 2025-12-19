@@ -13,7 +13,6 @@ const resultMessage = document.getElementById("result-message");
 const restartButton = document.getElementById("restart-btn");
 const progressBar = document.getElementById("progress");
 
-
 const quizQuestions = [
   {
     question: "What is the capital of France?",
@@ -62,11 +61,55 @@ const quizQuestions = [
   },
 ];
 
+let currentQuestionIndex = 0;
+let score = 0;
+let answersDisabled = false; // for stopping the user from changing his answer
 
-let currentQuestionIndex = 0
-let score = 0
-let answersDisabled = false // for stopping the user from changing his answer
+totalQuestionsSpan.textContent = quizQuestions.length;
+maxScoreSpan.textContent = quizQuestions.length;
 
-totalQuestionsSpan.textContent = quizQuestions.length
-maxScoreSpan.textContent = quizQuestions.length
+startButton.addEventListener("click", startQuiz);
+restartButton.addEventListener("click", restartQuiz);
 
+function startQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  scoreSpan.textContent = 0;
+  startScreen.classList.remove("active");
+  quizScreen.classList.add("active");
+
+  showQuestion
+}
+
+function restartQuiz() {}
+
+
+function showQuestion(){
+    answersDisabled = false
+
+    const currentQuestion = quizQuestions[currentQuestionIndex]
+
+    currentQuestionSpan.textContent = currentQuestionIndex + 1
+
+    const progressPercent = (currentQuestionIndex / quizQuestions.length) * 100
+
+    progressBar.style.width = progressBar + "%"
+
+
+    questionText.textContent = currentQuestion.question
+
+
+    answersContainer.textContent = ""
+
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button")
+        button.textContent = answer.text
+        button.classList.add("answer-btn")
+
+        button.dataset.correct = answer.correct  //dataset is a property of the button element used to store custom data within the button itself
+
+        button.addEventListener('click', selectAnswer)
+
+        answersContainer.appendChild(button)
+    })
+}
