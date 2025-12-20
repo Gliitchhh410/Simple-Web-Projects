@@ -15,7 +15,7 @@ export class QuizEngine {
 
 
     get isEnded(){
-        return this.currentIndex > this.questions.length
+        return this.currentIndex >= this.questions.length
     }
 
 
