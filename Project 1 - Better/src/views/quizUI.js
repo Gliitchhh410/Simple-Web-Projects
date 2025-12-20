@@ -99,4 +99,24 @@ export class QuizUI{
         })
     }
 
+
+    showResults(){
+        this.dom.quizScreen.classList.remove("active")
+        this.dom.startScreen.classList.remove("active")
+        this.dom.resultScreen.classList.remove("active")
+
+        this.finalScoreSpan.textContent = this.engine.score
+
+        const percentage = this.engine.progressPercent
+
+
+        if (percentage === 100) {
+        this.dom.resultMessage.textContent = "Fucking Great Job";
+    } else {
+        this.dom.resultMessage.textContent = "Not Fucking Great Job, Wanker";
+    }
+
+    
+    }
+
 }
