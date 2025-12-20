@@ -18,4 +18,12 @@ export class QuizUI{
         this.dom.restartButton.addEventListener("click", ()=> this.restart())
     }
 
+    start(){
+        this.dom.startScreen.classList.remove("active")
+        this.dom.quizScreen.classList.add("active")
+        this.dom.resultScreen.classList.remove("active")
+
+        this.dom.scoreSpan.textContent =    0
+    }
+
 }
