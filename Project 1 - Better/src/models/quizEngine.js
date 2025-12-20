@@ -18,4 +18,22 @@ export class QuizEngine {
     get progressPercent(){
         return (this.currentIndex / this.questions.length) * 100
     }
+
+
+    submitAnswer(isCorrect){
+        if (isCorrect){
+            this.score++
+        }
+        return isCorrect
+    }
+
+    next(){
+        this.index++
+    }
+
+
+    restart(){
+        this.score = 0
+        this.currentIndex = 0
+    }
 }
