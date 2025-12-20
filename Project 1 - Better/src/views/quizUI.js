@@ -33,4 +33,29 @@ export class QuizUI{
         this.start()
     }
 
+
+    renderQuestion(){
+        this.isLocked = false
+        const currentQ = this.engine.currentQuestion
+
+
+        this.dom.currentQuestionSpan.textContent = this.engine.currentIndex + 1
+        this.dom.questionText.textContent = currentQ.questionText
+        this.dom.progressBar.style.width = `${this.engine.progressPercent}%`
+
+
+
+        this.dom.answersContainer.innerHTML = ""
+
+        currentQ.answers.forEach(answer => {
+            const button = document.createElement("button")
+            button.textContent = answer.text
+            button.classList.add("answer-btn")
+            button.dataset.correct = answer.button
+
+            button.addEventListener("click", (e)=>{this.handleAnswer(e)})
+            this.dom.answersContainer.appendChild(button)
+        });
+    }
+
 }
