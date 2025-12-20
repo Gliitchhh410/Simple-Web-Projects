@@ -58,4 +58,33 @@ export class QuizUI{
         });
     }
 
+
+    handleAnswer(event){
+        if (this.isLocked) return
+        this.isLocked = true
+
+        const selectedButton = event.target
+        const isCorrect = selectedButton.dataset.correct === "true"
+
+
+        this.engine.submitAnswer(isCorrect)
+
+        this.highlightAnswer(selectedButton)
+
+        if (isCorrect){
+            this.dom.scoreSpan.textContent = this.engine.scoreSpan
+        }
+
+
+        setTimeout(()=> {
+            this.engine.next()
+            if (this.engine.isEnded()){
+                this.showResults()
+            }else {
+                this.renderQuestion()
+            }
+        }, 500)
+
+    }
+
 }
