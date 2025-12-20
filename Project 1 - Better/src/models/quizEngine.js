@@ -15,5 +15,7 @@ export class QuizEngine {
     }
 
 
-    
+    get progressPercent(){
+        return (this.currentIndex / this.questions.length) * 100
+    }
 }
