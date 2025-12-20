@@ -87,4 +87,16 @@ export class QuizUI{
 
     }
 
+
+    highlightAnswer(){
+        Array.from(this.dom.answersContainer.childred).forEach((button)=>{
+            if (button.dataset.correct === "true"){
+                button.classList.add("correct")
+            }
+            else if  (button === selectedButton){
+                button.classList.add("incorrect")
+            }
+        })
+    }
+
 }
