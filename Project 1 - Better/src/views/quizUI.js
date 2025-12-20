@@ -34,7 +34,7 @@ export class QuizUI {
     const currentQ = this.engine.currentQuestion;
 
     this.dom.currentQuestionSpan.textContent = this.engine.currentIndex + 1;
-    this.dom.question.textContent = currentQ.question;
+    this.dom.questionText.textContent = currentQ.question;
     this.dom.progressBar.style.width = `${this.engine.progressPercent}%`;
 
     this.dom.answersContainer.innerHTML = "";
