@@ -13,4 +13,9 @@ export class QuizUI{
     }
 
 
+    bindEvents(){
+        this.dom.startButton.addEventListener("click", ()=> this.start())
+        this.dom.restartButton.addEventListener("click", ()=> this.restart())
+    }
+
 }
