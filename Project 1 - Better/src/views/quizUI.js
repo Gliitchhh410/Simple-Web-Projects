@@ -24,6 +24,7 @@ export class QuizUI{
         this.dom.resultScreen.classList.remove("active")
 
         this.dom.scoreSpan.textContent =    0
+        this.renderQuestion()
     }
 
 
