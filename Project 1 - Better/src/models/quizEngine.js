@@ -4,4 +4,16 @@ export class QuizEngine {
         this.score = 0
         this.currentIndex = 0
     }
+
+    get currentQuestion(){
+        return this.questions[this.currentIndex]
+    }
+
+
+    get isEnded(){
+        return this.currentIndex > this.questions.length
+    }
+
+
+    
 }
