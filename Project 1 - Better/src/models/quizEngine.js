@@ -5,6 +5,10 @@ export class QuizEngine {
         this.currentIndex = 0
     }
 
+
+    get totalQuestions(){
+        return this.questions.length
+    }
     get currentQuestion(){
         return this.questions[this.currentIndex]
     }
