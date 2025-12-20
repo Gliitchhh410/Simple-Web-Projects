@@ -26,4 +26,10 @@ export class QuizUI{
         this.dom.scoreSpan.textContent =    0
     }
 
+
+    restart(){
+        this.engine.start()
+        this.start()
+    }
+
 }
