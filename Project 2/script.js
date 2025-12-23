@@ -2,8 +2,11 @@ const generateBtn = document.getElementById("generate-btn");
 const paletteContainer = document.querySelector(".paletter-container");
 
 generateBtn.addEventListener("click", generatePalette);
-
-generatePalette();
+paletteContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contain("copy-btn")){
+        const hexValue = e.target.previousElementSibling.textContent
+    }
+})
 
 function generatePalette() {
   const colors = [];
@@ -35,3 +38,5 @@ function generateRandomColor() {
   }
   return color;
 }
+
+generatePalette();
