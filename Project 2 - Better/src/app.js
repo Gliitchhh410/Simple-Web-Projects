@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (target.classList.contains("color")) {
       const info = target.nextElementSibling;
       hexValue = info.querySelector(".hex-value").textContent;
-      copyBtn = info.querySelector("copy-btn");
+      copyBtn = info.querySelector(".copy-btn");
     }
 
     if (hexValue && copyBtn) {
