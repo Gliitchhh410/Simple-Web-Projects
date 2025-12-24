@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hexValue && copyBtn) {
       try {
         await navigator.clipboard.writeText(hexValue);
-        ui.animateCopySuccess(copyBtn);
+        ui.animateCopy(copyBtn);
       } catch (err) {
         console.error("Copy failed", err);
       }
