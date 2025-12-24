@@ -1,5 +1,5 @@
-import { PaletteEngine } from "./models/PaletteEngine";
-import { PaletteUI } from "./views/PaletteUI";
+import { PaletteEngine } from "./models/PaletteEngine.js";
+import { PaletteUI } from "./views/PaletteUI.js";
 
 const domSelectors = {
   generateBtn: document.getElementById("generate-btn"),
