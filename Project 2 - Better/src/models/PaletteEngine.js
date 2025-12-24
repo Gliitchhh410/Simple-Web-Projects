@@ -5,7 +5,7 @@ export class PaletteEngine{
 
     generate(){
         const colors = []
-        for (let i = 0; i<this.size; i++){
+        for (let i = 0; i<6; i++){
             colors.push(this._getRandomHex())
         }
 
