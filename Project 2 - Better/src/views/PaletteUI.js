@@ -10,7 +10,7 @@ export class PaletteUI {
       const colorHex = box.querySelector(".hex-value");
 
       colorDiv.style.backgroundColor = color;
-      hexDiv.textContent = color;
+      colorHex.textContent = color;
     });
   }
 
