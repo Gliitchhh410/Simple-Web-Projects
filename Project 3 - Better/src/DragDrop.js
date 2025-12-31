@@ -54,7 +54,7 @@ export class Droppable {
     e.preventDefault();
 
     this.element.classList.remove("over");
-    const id = e.dataTransfer.getData("plain/text");
+    const id = e.dataTransfer.getData("text/plain");
     const draggableElement = document.getElementById(id);
 
     if (draggableElement) {
@@ -62,7 +62,7 @@ export class Droppable {
     }
 
     if (this.onDrop) {
-      this.onDropCallback(id, this.element.id);
+      this.onDrop(id, this.element.id);
     }
   };
 }
