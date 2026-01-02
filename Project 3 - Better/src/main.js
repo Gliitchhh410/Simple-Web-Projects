@@ -28,29 +28,25 @@ class KanbanBoard {
     });
   }
 
-  
-
-  addCard(text) { //text for now but will be object
-    
-    this._createCardHtml(text)
-    this.todoList.prepend(card)
-    this._makeDraggable(card)
+  _makeDraggable(card) {
+    new Draggable(card);
   }
-}
-
-_makeDraggable(card){
-    new Draggable(card) 
-  }
-  _createCardHtml(text){
-    const card = document.createElement("div")
-    card.classList.add("card")
+  _createCardHtml(text) {
+    const card = document.createElement("div");
+    card.classList.add("card");
     card.id = "card-" + Date.now();
     card.innerText = text;
-    return card
+    return card;
   }
 
+  addCard(text) {
+    //text for now but will be object
 
-
+    const card = this._createCardHtml(text);
+    this.todoList.prepend(card);
+    this._makeDraggable(card);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   new KanbanBoard();
