@@ -22,12 +22,12 @@ class KanbanBoard {
     this.lists.forEach((list) => {
       new Droppable(list, (cardID, targetListID, sourceListID) => {
         if (targetListID === sourceListID) return;
-        const cardTitle = document.querySelector(`#${cardId} strong`).innerText;
+        const cardTitle = document.querySelector(`#${cardID} strong`).innerText;
         const sourceName = document.querySelector(
-          `#${sourceListId} h2`
+          `#${sourceListID} h2`
         ).innerText;
         const targetName = document.querySelector(
-          `#${targetListId} h2`
+          `#${targetListID} h2`
         ).innerText;
 
         this.addLog(cardTitle, sourceName, targetName);

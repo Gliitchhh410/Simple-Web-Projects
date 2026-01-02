@@ -20,7 +20,7 @@ body {
 
 h1 {
     color: #333;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     font-size: 2rem;
 }
 
@@ -40,7 +40,9 @@ h1 {
     padding: 1rem;
     border-radius: 8px;
     width: 30%;
-    min-height: 600px;
+    min-height: 400px;
+    max-height:400px;
+    overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softened shadow */
 }
 
@@ -248,11 +250,11 @@ h1 {
 }
 
 .btn-save {
-    background-color: #007bff;
+    background-color: #7295bb;
     color: white;
 }
 .btn-save:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
 }
 
 
@@ -262,7 +264,7 @@ h1 {
 /* --- Activity Log --- */
 .log-section {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 20px auto;
     text-align: left;
     background: white;
     padding: 20px;
