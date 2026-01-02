@@ -45,6 +45,50 @@
     <div class="controls">
         <button id = "add-btn"><span id ="plus"><i class="fa-solid fa-plus"></i> </span>New Task</button>
     </div>
+
+
+
+
+
+
+
+
+    <!-- Adding new Task Window-->
+
+    <div id="task-modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Add New Task</h2>
+        <form id="task-form">
+            <div class="form-group">
+                <label>Task Name</label>
+                <input type="text" id="task-title" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="task-desc" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Importance</label>
+                <select id="task-priority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="close-btn" class="btn-cancel">Cancel</button>
+                <button type="submit" class="btn-save">Save Task</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
     <script type="module" src="src/main.js"></script>
 </body>
 </html>

@@ -6,6 +6,10 @@ class KanbanBoard {
     this.lists = document.querySelectorAll(".list");
     this.addBtn = document.getElementById("add-btn");
     this.todoList = document.getElementById("task-list1");
+
+    this.modal = document.getElementById("task-modal");
+    this.closeBtn = document.getElementById("close-btn");
+    this.taskForm = document.getElementById("task-form");
     this.init();
   }
 
@@ -21,21 +25,46 @@ class KanbanBoard {
     });
 
     this.addBtn.addEventListener("click", () => {
-      const input = prompt("What is the task ?");
-      if (input) {
-        this.addCard(input);
-      }
+      this.modal.classList.remove("hidden");
+    });
+
+    this.closeBtn.addEventListener("click", () => {
+      this.modal.classList.add("hidden");
+    });
+
+    this.taskForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const taskData = {
+        title: document.getElementById("task-title").value,
+        desc: document.getElementById("task-desc").value,
+        priority: document.getElementById("task-priority").value,
+      };
+
+      this.addCard(taskData);
+
+      this.taskForm.reset();
+      this.modal.classList.add("hidden");
     });
   }
 
   _makeDraggable(card) {
     new Draggable(card);
   }
-  _createCardHtml(text) {
+  _createCardHtml(data) {
     const card = document.createElement("div");
     card.classList.add("card");
+
+    // Add priority class (low, medium, high) for styling
+    card.classList.add(data.priority);
+
     card.id = "card-" + Date.now();
-    card.innerText = text;
+
+    // Construct the card content
+    card.innerHTML = `
+        <strong>${data.title}</strong>
+        <p>${data.desc}</p>`;
+
     return card;
   }
 
