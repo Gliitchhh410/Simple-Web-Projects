@@ -12,6 +12,10 @@ export class Draggable {
 
   handleDragStart = (e) => {
     e.dataTransfer.setData("text/plain", this.element.id);
+    const parentList = this.element.closest("list")
+    if (parentList){
+      e.dataTransfer.setData("source-id", parentList.id)
+    }
     this.element.classList.add("dragging");
   };
 
@@ -55,6 +59,7 @@ export class Droppable {
 
     this.element.classList.remove("over");
     const id = e.dataTransfer.getData("text/plain");
+    const sourceId = e.dataTransfer.getData("source-id")
     const draggableElement = document.getElementById(id);
 
     if (draggableElement) {
@@ -62,7 +67,7 @@ export class Droppable {
     }
 
     if (this.onDrop) {
-      this.onDrop(id, this.element.id);
+      this.onDrop(id, this.element.id, this.id);
     }
   };
 }

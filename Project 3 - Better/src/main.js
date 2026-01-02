@@ -6,6 +6,7 @@ class KanbanBoard {
     this.lists = document.querySelectorAll(".list");
     this.addBtn = document.getElementById("add-btn");
     this.todoList = document.getElementById("task-list1");
+    this.logList = document.getElementById("activity-log");
 
     this.modal = document.getElementById("task-modal");
     this.closeBtn = document.getElementById("close-btn");
@@ -19,8 +20,17 @@ class KanbanBoard {
     });
 
     this.lists.forEach((list) => {
-      new Droppable(list, (cardID, listID) => {
-        console.log(`Card ${cardID} dropped into List ${listID}`);
+      new Droppable(list, (cardID, targetListID, sourceListID) => {
+        if (targetListID === sourceListID) return;
+        const cardTitle = document.querySelector(`#${cardId} strong`).innerText;
+        const sourceName = document.querySelector(
+          `#${sourceListId} h2`
+        ).innerText;
+        const targetName = document.querySelector(
+          `#${targetListId} h2`
+        ).innerText;
+
+        this.addLog(cardTitle, sourceName, targetName);
       });
     });
 
@@ -42,10 +52,18 @@ class KanbanBoard {
       };
 
       this.addCard(taskData);
-
       this.taskForm.reset();
       this.modal.classList.add("hidden");
     });
+  }
+
+  addLog(taskName, fromList, toList) {
+    const logItem = document.createElement("li");
+    const user = "USER1-4NOW";
+    const timestamp = new Date().toLocaleTimeString();
+
+    logItem.innerHTML = `[${timestamp}] <span class="log-highlight">${taskName}</span> moved from <span class="log-highlight">${fromList}</span> to <span class="log-highlight">${toList}</span> by ${user}`;
+    this.logList.prepend(logItem);
   }
 
   _makeDraggable(card) {

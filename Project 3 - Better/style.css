@@ -9,7 +9,6 @@ body {
     background-color: #f7f9fc;
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
 }
 
@@ -21,7 +20,7 @@ body {
 
 h1 {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     font-size: 2rem;
 }
 
@@ -41,7 +40,7 @@ h1 {
     padding: 1rem;
     border-radius: 8px;
     width: 30%;
-    min-height: 400px;
+    min-height: 600px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softened shadow */
 }
 
@@ -255,6 +254,64 @@ h1 {
 .btn-save:hover {
     background-color: #0056b3;
 }
+
+
+
+
+
+/* --- Activity Log --- */
+.log-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    text-align: left;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.log-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+#activity-log {
+    list-style: none;
+    padding: 0;
+    max-height: 200px; /* Scrollable if too long */
+    overflow-y: auto;
+}
+
+#activity-log li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-family: monospace; /* Code-like font */
+    color: #555;
+    font-size: 0.95rem;
+}
+
+#activity-log li:first-child {
+    font-weight: bold;
+    color: #007bff; /* Highlight the newest log */
+}
+
+/* Specific styling for the variables in the log */
+.log-highlight {
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
